@@ -8,20 +8,31 @@ import bus from "../containers/bus.gif"
 import { Input, Segment } from 'semantic-ui-react';
 import MainMenu from "./menu"
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { latOnMap: 51.5085300, lonOnMap: -0.1257400, lat: 51.5085300, lon: -0.1257400, zoomOnMap: 13 };
+
+  }
 
   componentDidMount() {
     this.props.fetchData(`https://api.tfl.gov.uk/line/${this.props.params.id}/stoppoints`);
   }
 
   componentWillReceiveProps(nextProps) {
-    var Numberbusses = []
+    var Numberbusses = [];
+    var posMapLat = [];
+    var posMapLon = [];
     if (this.props !== nextProps) {
       for (var i = 0; i <= nextProps.busses.length - 1; i++) {
         Numberbusses.push(nextProps.busses[i].commonName);
+        posMapLat.push(nextProps.busses[i].lat)
+        posMapLon.push(nextProps.busses[i].lon)
       }
       this.setState({
         words: Numberbusses,
-        busses: Numberbusses
+        busses: Numberbusses,
+        latOnMap: posMapLat,
+        lonOnMap: posMapLon
       });
     }
   }
@@ -37,7 +48,9 @@ class App extends Component {
     woords = woords.filter(woords => woords.indexOf(this.state.contain) !== -1);
     this.setState({ words: woords });
   }
-
+  mapCenter(latCenter, lonCenter) {
+    this.setState({ lat: latCenter, lon: lonCenter, zoomOnMap: 17 })
+  }
 
 
 
@@ -58,16 +71,16 @@ class App extends Component {
         </form>
 
         <div className="text">
-        <h2>Number busses: ({this.props.busses.length}):</h2>
+          <h2>Number busses: ({this.props.busses.length}):</h2>
         </div>
         <ul className="listBus">
-          {this.state == null ? <div><img alt="loading..." className="BusLoading" src={bus}></img></div> : this.state.words.map((station, index) => {
-            return <li key={index}>
+          {this.state.words == undefined ? <div><img alt="loading..." className="BusLoading" src={bus}></img></div> : this.state.words.map((station, index) => {
+            return <li onClick={() => { this.mapCenter(this.state.latOnMap[index], this.state.lonOnMap[index]) }} key={index}>
               <div> {station}</div>
             </li>
           })}
         </ul>
-        <GoogleApiWrapper stations={this.props.busses}></GoogleApiWrapper>
+        <GoogleApiWrapper stations={this.props.busses} centerLat={this.state.lat} centerLon={this.state.lon} zoomOnMap={this.state.zoomOnMap}></GoogleApiWrapper>
       </div>
 
 

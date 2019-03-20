@@ -11,7 +11,6 @@ class MenuComponent extends Component {
             <Menu>
                 <Menu.Item  >
                     <Link to="/">Main</Link>
-
                 </Menu.Item>
             </Menu>
 
