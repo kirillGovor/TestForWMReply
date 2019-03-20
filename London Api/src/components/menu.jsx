@@ -17,9 +17,6 @@ class MenuComponent extends Component {
         );
     }
 }
-
-
-
 export default MenuComponent;
 
 

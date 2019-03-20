@@ -10,7 +10,7 @@ import MainMenu from "./menu"
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { latOnMap: 51.5085300, lonOnMap: -0.1257400, lat: 51.5085300, lon: -0.1257400, zoomOnMap: 13 };
+    this.state = { latOnMap: 51.5085300, lonOnMap: -0.1257400, lat: 51.5085300, lon: -0.1257400, zoomOnMap: 11 };
 
   }
 
@@ -73,8 +73,8 @@ class App extends Component {
         <div className="text">
           <h2>Number busses: ({this.props.busses.length}):</h2>
         </div>
-        <ul className="listBus">
-          {this.state.words == undefined ? <div><img alt="loading..." className="BusLoading" src={bus}></img></div> : this.state.words.map((station, index) => {
+        <ul className="listStations">
+          {this.state.words === undefined ? <div><img alt="loading..." className="BusLoading" src={bus}></img></div> : this.state.words.map((station, index) => {
             return <li onClick={() => { this.mapCenter(this.state.latOnMap[index], this.state.lonOnMap[index]) }} key={index}>
               <div> {station}</div>
             </li>
