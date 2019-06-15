@@ -40,7 +40,7 @@ function realezeView(filter) {
                <input style="display:none;" id="subTaskinput${todo.storage.id[i]}" type="text" class="inputSubTask" placeholder="add subtask.."></input>  </li></ol>   
                <input id="buttonSubTask${todo.storage.id[i]}"  class="AddSubTask" onclick="addSubtask(event)" style="display:none" type="button" value="add"></input>  </li></ol>   
                `
-
+               break;
                 }
                
 
