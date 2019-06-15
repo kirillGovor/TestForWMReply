@@ -109,7 +109,12 @@
     transition: 0.3s;
 }
 .AddSubTask:hover{
-    color: rgb(111, 164, 224);
+    color: #6fa4e0;
     background-color: white;
     border-radius: 3px; 
+}
+h1{
+    text-shadow: -1px -1px 0px #6fa4e0, 0px -1px 0px #6fa4e0, 1px -1px 0px  #6fa4e0, -1px 0px 0px  #6fa4e0, 1px 0px 0px #6fa4e0, -1px 1px 0px #6fa4e0, 0px 1px 0px  #6fa4e0, 1px 1px 0px  #6fa4e0;
+    color: white;
+    text-align: center;
 }
