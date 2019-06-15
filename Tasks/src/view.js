@@ -35,7 +35,7 @@ function realezeView(filter) {
                 }
 
                 var code = code + `
-                <ol class="list"><li>${todo.storage.task[i]}  <img class="removeButton" src="70091.png" width="20px"onClick="remove()"  id="image${todo.storage.id[i]}"><ol > ${subtasks}</ol>
+                <ol class="list"><li>${todo.storage.task[i]}  <img class="removeButton" src="70091.png" width="20px"onClick="remove()"  id="image${todo.storage.id[i]}"><ol style="cursor:pointer" > ${subtasks}</ol>
                <input id="${todo.storage.id[i]}" class="button_add" type="button" value="+" onclick="ShowSubTask(event)"></input>  </li></ol>       
                <input style="display:none;" id="subTaskinput${todo.storage.id[i]}" type="text" class="inputSubTask" placeholder="add subtask.."></input>  </li></ol>   
                <input id="buttonSubTask${todo.storage.id[i]}"  class="AddSubTask" onclick="addSubtask(event)" style="display:none" type="button" value="add"></input>  </li></ol>   
@@ -74,7 +74,7 @@ function realezeView(filter) {
 
 
                 var code = code + `
-                 <ol class="list"><li>${todo.storage.task[i]}  <img class="removeButton" src="70091.png" width="20px"onClick="remove()"  id="image${todo.storage.id[i]}"> <ol >${subtasks}</ol>
+                 <ol class="list"><li>${todo.storage.task[i]}  <img class="removeButton" src="70091.png" width="20px"onClick="remove()"  id="image${todo.storage.id[i]}"> <ol style="cursor:pointer" >${subtasks}</ol>
                 <input id="${todo.storage.id[i]}" class="button_add" type="button" value="+" onclick="ShowSubTask(event)"></input>  </li></ol>       
                 <input style="display:none;" id="subTaskinput${todo.storage.id[i]}" class="inputSubTask" type="text" placeholder="add subtask.."></input>  </li></ol>   
                 <input id="buttonSubTask${todo.storage.id[i]}" class="AddSubTask" onclick="addSubtask(event)" style="display:none" type="button" value="add"></input>  </li></ol>   

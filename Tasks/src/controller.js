@@ -10,7 +10,7 @@ function cheked(e){
 }
 else{
     e.target.style= "text-decoration: none";
-    e.target.children[0].checked =false;
+  //  e.target.children[0].checked =false;
     todo.Check(false, e.target.innerHTML)
 }
     console.log();
