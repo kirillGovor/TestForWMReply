@@ -43,7 +43,8 @@ function addTAsk(subTask) {
 
 function remove(e){
     e=event;
-    var id = Number(e.target.id.slice(-1));
+    var regex = /\d+/g;
+    var id = e.target.id.match(regex);  // creates array from matches
     todo.DeleteTask(id);
     realezeView();
 }
@@ -80,9 +81,9 @@ function ShowSubTask(e) {
 
 function addSubtask(e) {
     e = event
-    var i = Number(e.target.id.slice(-1));
     var id=todo.GetId();
-
+    var regex = /\d+/g;
+    var i = e.target.id.match(regex);  // creates array from matches
 
     var input = document.getElementById(`subTaskinput${i}`).value;
     var button = document.getElementById(`buttonSubTask${i}`);
