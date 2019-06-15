@@ -91,7 +91,7 @@
 
     Check(boo,name){
         if(boo===true){
-        var word = name.split('>')[1];
+        var word = name//.split('>')[1];
         this.storage.cheked.push(word);
         console.log(this.storage.cheked);
     }

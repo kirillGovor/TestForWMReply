@@ -24,21 +24,21 @@ function realezeView(filter) {
                         if (todo.storage.subtasks[i].length > 0) {
 
                             for (var j = 0; j <= todo.storage.subtasks[i].length - 1; j++) {
-                                subtasks = subtasks + `<li style="text-decoration: none; cursor:pointer" onclick="cheked(event)">  <input type="checkbox"   />${todo.storage.subtasks[i][j]}</li><br>`
+                                subtasks = subtasks + `<li style="text-decoration: none; cursor:pointer" onclick="cheked(event)">  ${todo.storage.subtasks[i][j]}</li><br>`
                             }
 
                         }
                     
                     else {
-                        subtasks = subtasks + `<li style="text-decoration: none; cursor:pointer" onclick="cheked(event)"> <input type="checkbox" />${todo.storage.subtasks[i][j]}</li><br>`
+                        subtasks = subtasks + `<li style="text-decoration: none; cursor:pointer" onclick="cheked(event)"> ${todo.storage.subtasks[i][j]}</li><br>`
                     }
                 }
 
                 var code = code + `
-                <ul><li>${todo.storage.task[i]}  <img src="70091.png" width="20px"onClick="remove()"  id="image${todo.storage.id[i]}"><ul > ${subtasks}</ul>
-               <input id="${todo.storage.id[i]}" type="button" value="+" onclick="ShowSubTask(event)"></input>  </li></ul>       
-               <input style="display:none;" id="subTaskinput${todo.storage.id[i]}" type="text" placeholder="add subtask.."></input>  </li></ul>   
-               <input id="buttonSubTask${todo.storage.id[i]}" onclick="addSubtask(event)" style="display:none" type="button" value="add"></input>  </li></ul>   
+                <ol class="list"><li>${todo.storage.task[i]}  <img class="removeButton" src="70091.png" width="20px"onClick="remove()"  id="image${todo.storage.id[i]}"><ol > ${subtasks}</ol>
+               <input id="${todo.storage.id[i]}" class="button_add" type="button" value="+" onclick="ShowSubTask(event)"></input>  </li></ol>       
+               <input style="display:none;" id="subTaskinput${todo.storage.id[i]}" type="text" class="inputSubTask" placeholder="add subtask.."></input>  </li></ol>   
+               <input id="buttonSubTask${todo.storage.id[i]}"  class="AddSubTask" onclick="addSubtask(event)" style="display:none" type="button" value="add"></input>  </li></ol>   
                `
 
                 }
@@ -63,7 +63,7 @@ function realezeView(filter) {
                     if (todo.storage.subtasks[i].length > 0) {
 
                         for (var j = 0; j <= todo.storage.subtasks[i].length - 1; j++) {
-                            subtasks = subtasks + ` <li style="text-decoration: none; cursor:pointer" onclick="cheked(event)"><input type="checkbox"  />${todo.storage.subtasks[i][j]}</li><br>`
+                            subtasks = subtasks + ` <li style="text-decoration: none; cursor:pointer" onclick="cheked(event)">${todo.storage.subtasks[i][j]}</li><br>`
                         }
 
                     }
@@ -74,10 +74,10 @@ function realezeView(filter) {
 
 
                 var code = code + `
-                 <ul><li>${todo.storage.task[i]}  <img src="70091.png" width="20px"onClick="remove()"  id="image${todo.storage.id[i]}"> <ul >${subtasks}</ul>
-                <input id="${todo.storage.id[i]}" type="button" value="+" onclick="ShowSubTask(event)"></input>  </li></ul>       
-                <input style="display:none;" id="subTaskinput${todo.storage.id[i]}" type="text" placeholder="add subtask.."></input>  </li></ul>   
-                <input id="buttonSubTask${todo.storage.id[i]}" onclick="addSubtask(event)" style="display:none" type="button" value="add"></input>  </li></ul>   
+                 <ol class="list"><li>${todo.storage.task[i]}  <img class="removeButton" src="70091.png" width="20px"onClick="remove()"  id="image${todo.storage.id[i]}"> <ol >${subtasks}</ol>
+                <input id="${todo.storage.id[i]}" class="button_add" type="button" value="+" onclick="ShowSubTask(event)"></input>  </li></ol>       
+                <input style="display:none;" id="subTaskinput${todo.storage.id[i]}" class="inputSubTask" type="text" placeholder="add subtask.."></input>  </li></ol>   
+                <input id="buttonSubTask${todo.storage.id[i]}" class="AddSubTask" onclick="addSubtask(event)" style="display:none" type="button" value="add"></input>  </li></ol>   
                 `
 
 

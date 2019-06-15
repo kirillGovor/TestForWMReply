@@ -5,7 +5,7 @@ function cheked(e){
     e=event;
     if( e.target.style.textDecoration=="none"){
     e.target.style= "text-decoration: line-through";
-    e.target.children[0].checked =true;
+  //  e.target.children[0].checked =true;
     todo.Check(true, e.target.innerHTML)
 }
 else{

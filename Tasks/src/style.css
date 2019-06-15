@@ -1,0 +1,115 @@
+.seach{
+    width: 250px;
+    height: 30px;
+    border-radius: 3px;
+    border: solid 1px rgb(111, 164, 224);
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.container{
+    width: 300px;
+    margin: auto;
+    border-radius: 3px;
+    border: solid 1px rgb(111, 164, 224);;
+    box-shadow: 0 8px 6px -6px rgb(111, 164, 224);;
+}
+.clearFinishedButton{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    width: 250px;
+    height: 30px;
+    border-radius: 3px;
+    border: solid 1px rgb(111, 164, 224);
+    color:white;
+    background-color: rgb(111, 164, 224);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.clearFinishedButton:hover{
+    border: solid 1px rgb(111, 164, 224);
+    color:rgb(111, 164, 224);
+    background-color: white;
+ 
+}
+.removeButton{
+    float: right;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.list{
+    font-size: 20px;
+    transition: 0.3s;
+    margin-top: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.list:hover{
+    color: white;
+    background-color: rgb(111, 164, 224);
+    border-radius: 3px;
+    
+}
+.list:hover .button_add{
+    color: rgb(111, 164, 224);
+    background-color: white;
+    border-radius: 3px;
+        
+}
+
+.button_add{
+    border-radius: 3px;
+    border: solid 1px rgb(111, 164, 224);
+    color:white;
+    background-color: rgb(111, 164, 224);
+    cursor: pointer;
+}
+.inputTodo{
+    width: 200px;
+    height: 30px;
+    border-radius: 3px;
+    border: solid 1px rgb(111, 164, 224);
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.addTodo{
+    height: 34px;
+    width: 50px;
+    border-radius: 3px;
+    border: solid 1px rgb(111, 164, 224);
+    color:white;
+    background-color: rgb(111, 164, 224);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.addTodo:hover{
+    color: rgb(111, 164, 224);
+    background-color: white;
+    border-radius: 3px;
+}
+.inputSubTask{
+   float: left;
+    height: 25px;
+    border-radius: 3px;
+    border: solid 1px rgb(111, 164, 224);
+    margin-right: 15px;
+    margin-left: 20px;
+}
+.AddSubTask{
+    height: 28px;
+    width: 50px;
+    margin-left: 10px;
+   
+    border-radius: 3px;
+    border: solid 1px rgb(111, 164, 224);
+    color:white;
+    background-color: rgb(111, 164, 224);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.AddSubTask:hover{
+    color: rgb(111, 164, 224);
+    background-color: white;
+    border-radius: 3px; 
+}
