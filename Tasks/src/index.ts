@@ -28,10 +28,11 @@ export function realezeView(filter?: string[]): void {
                    <input id="${todo.storage.id[i]}" class="button_add" type="button" value="+" ></input>  </li></ol>       
                    <input style="display:none;" id="subTaskinput${todo.storage.id[i]}" class="inputSubTask" type="text" placeholder="add subtask.."></input>  </li></ol>   
                    <input id="buttonSubTask${todo.storage.id[i]}" class="AddSubTask"  style="display:none" type="button" value="add"></input>  </li></ol>   
-                   <p style="display:none;" id="textIdTimer${todo.storage.id[i]}">Timer</p>
-                   <input style="display:none;" id="subTaskinputDateHours${todo.storage.id[i]}" width="25px" type="text" class="" placeholder="add h.."></input>  </li></ol>
-                   <input style="display:none;" id="subTaskinputDateMinutes${todo.storage.id[i]}" width="25px" type="text" class="" placeholder="add m.."></input>  </li></ol>
-                   <input style="display:none;" id="subTaskinputDateSeconds${todo.storage.id[i]}" width="25px"  type="text" class="" placeholder="add c.."></input>  </li></ol>
+                   <p style="display:none;" id="textIdTimer${todo.storage.id[i]}">Timer</p><br>
+                   <input style="display:none;" id="subTaskinputDateHours${todo.storage.id[i]}"  type="text" class="" placeholder="add h.."></input>  </li></ol>
+                   <input style="display:none;" id="subTaskinputDateMinutes${todo.storage.id[i]}" type="text" class="" placeholder="add m.."></input>  </li></ol>
+                   <input style="display:none;" id="subTaskinputDateSeconds${todo.storage.id[i]}"  type="text" class="" placeholder="add c.."></input>  </li></ol>
+                   
                    `
                     subtasks = '';
                     EventView.addID(todo.storage.id[i]);
@@ -56,14 +57,15 @@ export function realezeView(filter?: string[]): void {
                         }
                     }
                     var code = code + `
-                 <ol class="list"><li>${todo.storage.task[i]}  <img class="removeButton" src="70091.png" width="20px"  id="image${todo.storage.id[i]}"> <ol >${subtasks}</ol>
+                    <br><ol class="list"><li>${todo.storage.task[i]}  <img class="removeButton" src="70091.png" width="20px"  id="image${todo.storage.id[i]}"> <ol >${subtasks}</ol>
                 <input id="${todo.storage.id[i]}" class="button_add" type="button" value="+" ></input>  </li></ol>       
                 <input style="display:none;" id="subTaskinput${todo.storage.id[i]}" class="inputSubTask" type="text" placeholder="add subtask.."></input>  </li></ol>   
                 <input id="buttonSubTask${todo.storage.id[i]}" class="AddSubTask"  style="display:none" type="button" value="add"></input>  </li></ol>   
-                <p style="display:none;" id="textIdTimer${todo.storage.id[i]}">Timer</p>
+                <p style="display:none;" id="textIdTimer${todo.storage.id[i]}">Timer</p><br><br>
                 <input style="display:none;"class="inputSubTask_h" id="subTaskinputDateHours${todo.storage.id[i]}" width="25px" type="text" class="" placeholder="add h.."></input>  </li></ol>
                 <input style="display:none;"class="inputSubTask_h" id="subTaskinputDateMinutes${todo.storage.id[i]}" width="25px" type="text" class="" placeholder="add m.."></input>  </li></ol>
                 <input style="display:none;"class="inputSubTask_h" id="subTaskinputDateSeconds${todo.storage.id[i]}" width="25px"  type="text" class="" placeholder="add c.."></input>  </li></ol>
+                
                 `
                     EventView.addID(todo.storage.id[i]);
                     subtasks = '';

@@ -67,18 +67,16 @@ export function ShowSubTask(e:any)  { ///event эт какой тип?
     e = event;
     var input = document.getElementById(`subTaskinput${e.target.id}`);
     var button = document.getElementById(`buttonSubTask${e.target.id}`);
-    var text =document.getElementById(`textIdTimer${todo.storage.id}`)
     var hours = document.getElementById(`subTaskinputDateHours${e.target.id}`);
     var minutes = document.getElementById(`subTaskinputDateMinutes${e.target.id}`);
     var seconds = document.getElementById(`subTaskinputDateSeconds${e.target.id}`);
-    if(input&&button&&hours&&minutes&&seconds&&text){
+    if(input&&button&&hours&&minutes&&seconds){
     if (input.style.display === "none") {
         input.style.display = "block";
         button.style.display = "block";
         hours.style.display = "block";
         minutes.style.display = "block";
         seconds.style.display = "block";
-        text.style.display="block";
         e.target.value = "-";
     }
     else {
@@ -87,7 +85,6 @@ export function ShowSubTask(e:any)  { ///event эт какой тип?
         hours.style.display = "none";
         minutes.style.display = "none";
         seconds.style.display = "none";
-        text.style.display="none";
         e.target.value = "+";
     }
 }
