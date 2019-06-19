@@ -65,7 +65,6 @@ export function realezeView(filter?: string[]): void {
                 <input style="display:none;"class="inputSubTask_h" id="subTaskinputDateHours${todo.storage.id[i]}" width="25px" type="text" class="" placeholder="add h.."></input>  </li></ol>
                 <input style="display:none;"class="inputSubTask_h" id="subTaskinputDateMinutes${todo.storage.id[i]}" width="25px" type="text" class="" placeholder="add m.."></input>  </li></ol>
                 <input style="display:none;"class="inputSubTask_h" id="subTaskinputDateSeconds${todo.storage.id[i]}" width="25px"  type="text" class="" placeholder="add c.."></input>  </li></ol>
-                
                 `
                     EventView.addID(todo.storage.id[i]);
                     subtasks = '';
