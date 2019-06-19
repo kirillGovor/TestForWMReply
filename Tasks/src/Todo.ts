@@ -1,17 +1,18 @@
 export class Todo {
     id: number = -1;
     idForInput: number = -2;
-    storage: { task: string[], id: Array<number>, subtasks: any, cheked: Todo[] } = {
+    storage: { task: string[], id: Array<number>, subtasks: any, timer: any, cheked: Todo[] } = {
         task: [],
         id: [],
         subtasks: [],
         cheked: [],
+        timer: []
     }
     constructor() {
-        this.storage = { task: [], id: [], subtasks: [], cheked: [] };
+        this.storage = { task: [], id: [], subtasks: [], cheked: [], timer: [] };
         this.id = -1;
         this.idForInput = -2;
-        // localStorage.clear();
+
         if (window.localStorage.getItem("Todo") && window.localStorage.getItem("Todo") != "{}") {
             var returnvalueJSON1: any = localStorage.getItem("Todo");
             if (returnvalueJSON1) {
@@ -21,6 +22,46 @@ export class Todo {
 
         }
     }
+
+    updateTimers() {
+        if (this.storage.timer.length > 0) {
+            for (var i = 0; i < this.storage.timer.length; i++) {
+                for (var j = 0; j < this.storage.timer[i].length; j++) {
+                    var subtasks = document.getElementById(`subtask${i}timer${j}`);
+                    var text = document.getElementById(`subtask${i}timer${j}`)
+
+                    if (this.storage.timer[i][j].seconds > 0) {
+                        this.storage.timer[i][j].seconds--;
+                    }
+                    else {
+                        if (this.storage.timer[i][j].minutes > 0) {
+                            this.storage.timer[i][j].minutes--;
+                            this.storage.timer[i][j].seconds = 59;
+
+                        }
+                        else {
+                            if (this.storage.timer[i][j].hours > 0) {
+                                this.storage.timer[i][j].minutes = 59
+                                this.storage.timer[i][j].hours--;
+
+                            }
+                            else {
+                                text!.innerHTML = "finished";
+                            }
+                        }
+                    }
+                    if (subtasks)
+                        subtasks.innerHTML = this.storage.timer[i][j].hours + `:` + this.storage.timer[i][j].minutes + ":" + this.storage.timer[i][j].seconds;
+                }
+
+
+
+            }
+        }
+
+    }
+
+
 
     getId() {
         return (this.id);
@@ -32,17 +73,19 @@ export class Todo {
         this.storage.id.push(this.id);
     }
 
-    addSubstaks(id: any, subtasks: string[]) { // оставил пока такой варинт, т.к. через FindIndex нужно будет забрать х
-       for (var i = 0; i < this.storage.task.length; i++) {
-            if (this.storage.id[i] == id) {
+    addSubstaks(id: any, subtasks: string[], date: string[]) { // оставил пока такой варинт, т.к. через FindIndex нужно будет забрать х
+        for (var i = 0; i < this.storage.task.length; i++) {
+            if (this.storage.id[i] == id[0]) {
                 if (this.storage.subtasks[i] != undefined) {
                     this.storage.subtasks[i].push(subtasks);
+                    this.storage.timer[i].push(date[0]);
                 }
                 else {
                     this.storage.subtasks[id] = subtasks;
+                    this.storage.timer[i] = date;
                 }
             }
-        } 
+        }
     }
 
     deleteFinishedTask() {
@@ -115,17 +158,15 @@ export class Todo {
         nameList.push(this.storage)
         let JSONstorage = { storage: this.storage };
         var returnvalueJSON1 = localStorage.getItem("Todo");
-        if (returnvalueJSON1) {
-            JSON.parse(returnvalueJSON1)
-        }
         var valueJSON1 = JSON.stringify(JSONstorage);
-
-        localStorage.setItem("Todo", valueJSON1);
         var storage = localStorage.getItem(String(this.storage));
-
-        if (storage) {
+        if (returnvalueJSON1) 
+            JSON.parse(returnvalueJSON1)
+        
+        localStorage.setItem("Todo", valueJSON1);
+        if (storage) 
             JSON.parse((String(storage)));
-        }
+        
 
 
         return (nameList);
@@ -135,5 +176,4 @@ export class Todo {
 
 
 export let todo = new Todo();
-
 export let addList = new Todo().addTask("dffd")

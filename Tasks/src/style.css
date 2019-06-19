@@ -118,3 +118,12 @@ h1{
     color: white;
     text-align: center;
 }
+.inputSubTask_h{
+    float: left;
+    height: 25px;
+    border-radius: 3px;
+    border: solid 1px rgb(111, 164, 224);
+    margin-right: 15px;
+    margin-left: 20px;
+    width: 45px;
+}

@@ -1,4 +1,4 @@
-import { cheked, deleteFinished, addTAsk, remove, seach, ShowSubTask, addSubtask } from './controller';
+import { cheked, remove,seach,addTAsk, ShowSubTask,deleteFinished, addSubtask } from './controller';
 export default class View {
     idElemnts: { removeButton: any[], button_add: any[], AddSubTask: any[], subTaskinput: any[], cursorSubtask: any[],seach:any[] } = {
         removeButton: [],
@@ -41,6 +41,19 @@ export default class View {
 
     createEvents() {
 
+        var inputSeach = document.getElementById("seach");
+        var add = document.getElementById("add");
+        var clear = document.getElementById("clear");
+        console.log(inputSeach, document, clear);
+        inputSeach!.oninput = function () {
+            seach();
+        };
+        add!.onclick = function () {
+            addTAsk()
+        }
+        clear!.onclick = function () {
+            deleteFinished()
+        }
         for (var i = 0; i < this.id.length + 1; i++) {
             //кнопка удаления
             this.idElemnts.removeButton[i] = document.getElementById(`image${this.id[i - 1]}`);
