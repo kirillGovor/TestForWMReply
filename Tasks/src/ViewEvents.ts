@@ -23,7 +23,6 @@ export default class View {
   
     addIDSubtask(id:string){
         this.idSubtask.push(id);
-        console.log(this.idSubtask);
     }
     
     createEventsSubtask(){
@@ -44,7 +43,6 @@ export default class View {
         var inputSeach = document.getElementById("seach");
         var add = document.getElementById("add");
         var clear = document.getElementById("clear");
-        console.log(inputSeach, document, clear);
         inputSeach!.oninput = function () {
             seach();
         };

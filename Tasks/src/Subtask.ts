@@ -1,4 +1,3 @@
-import {Tasks} from './Task';
 export default class Subtasks  {
     subtasks: { task: string[], id: number, cheked: Boolean,date?:any } = {
         task: [],
@@ -16,7 +15,7 @@ export default class Subtasks  {
         this.subtasks.date.push(date);
     }
    
-//setInterval(updateTimers, 1000);//таймер
+
 }
 
 
