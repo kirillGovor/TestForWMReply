@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { DeleteTask, changeSubtask, deleteSubtask, chektask, checkSubtasks, allcheckSubtasksTrue, allcheckSubtasksFalse } from '../actions/index'
+import { DeleteTask, changeSubtask,deleteCheked, deleteSubtask, chektask, checkSubtasks, allcheckSubtasksTrue, allcheckSubtasksFalse } from '../actions/index'
 import{renderdate} from './renderDate'
 
 
@@ -50,21 +50,21 @@ const Filter = ({ dispatch, filteredList, ListTask }) => {
                 <li >
                   <span style={TodoComponent} onClick={e => { 
                     dispatch(chektask(item.id, !ListTask.cheked[i]));
-                    item.subtask.map((item3, i) => {
+                    item.subtask.map((item3, j) => {
                       if (ListTask.cheked[i] === true) {
-                        dispatch(allcheckSubtasksTrue(item3, i, item.id));
+                        dispatch(allcheckSubtasksTrue(item3, j, j));
                       }
                       else {
-                        dispatch(allcheckSubtasksFalse(item3, i, item.id));
+                        dispatch(allcheckSubtasksFalse(item3, j, j));
                       }
                     })
                   }} >{item.task} </span>
 
                   <ol>
 
-                    {item.subtask.map((item2, i) => {
+                    {item.subtask.map((item2, k) => {
 
-                      if (item.cheked[i] == true) {
+                      if (item.cheked[k] == true) {
                         SubtaskComponent = {
                           textDecoration: "line-through",
                           cursor: "pointer"
@@ -77,17 +77,17 @@ const Filter = ({ dispatch, filteredList, ListTask }) => {
                         }
                       }
                       return (
-                        <div key={i}>
-                          <li style={SubtaskComponent} key={i}
+                        <div key={k}>
+                          <li style={SubtaskComponent} key={k}
                             onClick={e => {
                               e.preventDefault();
-                              dispatch(checkSubtasks(item2, i, item.id));
+                              dispatch(checkSubtasks(item2, k, i));
                             }}> {item2}</li>
 
 
                           <button className="AddSub" onClick={e => {
                             e.preventDefault();
-                            dispatch(deleteSubtask(item2, i, item.id, item.cheked));
+                            dispatch(deleteSubtask(item2, k, i, item.cheked));
                           }} >
                             Delete subtask</button>
                         </div>
@@ -102,6 +102,7 @@ const Filter = ({ dispatch, filteredList, ListTask }) => {
                 <button className="AddSub" onClick={e => {
                   e.preventDefault()
                   dispatch(DeleteTask(item.id));
+                  dispatch(deleteCheked(i));
                 }} type="button" >Delete</button>
 
                 <button className="AddSub" type="button" onClick={e => {

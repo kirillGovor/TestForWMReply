@@ -71,7 +71,7 @@ const Tasks = ({ dispatch, ListTask }) => {
 
                     {item.subtask.map((item2, k) => {
 
-                      if (item.cheked[i] == true) {
+                      if (item.cheked[k] == true) {
                         SubtaskComponent = {
                           textDecoration: "line-through",
                           cursor: "pointer"
@@ -85,17 +85,17 @@ const Tasks = ({ dispatch, ListTask }) => {
                       }
 
                       return (
-                        <div key={i}>
-                          <li style={SubtaskComponent}  key={i}
+                        <div key={k}>
+                          <li style={SubtaskComponent}  key={k}
                             onClick={e => {
                               e.preventDefault();
-                              dispatch(checkSubtasks(item2, k, item.id))
+                              dispatch(checkSubtasks(item2, k, i))
                             }}> {item2}</li>
 
 
                           <button className="AddSub" onClick={e => {
                             e.preventDefault();
-                            dispatch(deleteSubtask(item2, k, item.id, item.cheked));
+                            dispatch(deleteSubtask(item2, k, i, item.cheked));
                           }} >
                             delete subtask</button>
                         </div>

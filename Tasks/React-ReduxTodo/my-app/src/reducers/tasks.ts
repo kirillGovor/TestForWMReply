@@ -62,7 +62,7 @@ const tasks = (state = initialState, action) => {
       ]
 
     case 'CHEK_SUBTASK':
-      state[action.payload.id].cheked[action.payload.id] = (!state[action.payload.id].cheked[action.payload.id])
+      state[action.payload.idTask].cheked[action.payload.id] = (!state[action.payload.idTask].cheked[action.payload.id])
       return [
 
         ...state,
@@ -91,12 +91,12 @@ const tasks = (state = initialState, action) => {
     return state.filter(task => task.id !== parseInt(action.id));
 
     case 'DELETE_SUBTASK':
-      state[action.id] = {
-        id: state[action.id].id,
-        task: state[action.id].task,
-        date: state[action.id].date,
-        cheked:state[action.id].cheked.filter((task, index) => index !== parseInt(action.id)),
-        subtask: state[action.id].subtask.filter((task, index) => index !== parseInt(action.id)),
+      state[action.idTask] = {
+        id: state[action.idTask].id,
+        task: state[action.idTask].task,
+        date: state[action.idTask].date,
+        cheked:state[action.idTask].cheked.filter((task, index) => index !== parseInt(action.id)),
+        subtask: state[action.idTask].subtask.filter((task, index) => index !== parseInt(action.id)),
       }
       return [
         ...state,

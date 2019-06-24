@@ -105,7 +105,7 @@ export const changeSubtask = (subtask:string,id:number,id2:number)=>({
   type:'CHANGE_SUBTASK',
   id:id,
   subtask,
-  idTask:id2,
+  idTask:id,
   
 })
 
