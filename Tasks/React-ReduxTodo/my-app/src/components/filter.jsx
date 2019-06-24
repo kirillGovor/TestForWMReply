@@ -138,10 +138,11 @@ function mapStateToProps(state) {
       if (filterSubtask.length > 0) {
         storage.push(state.tasks[i]);
       }
+      else {
+        filteredTASK[i] = state.tasks[i];
+      }
     }
-    else {
-      filteredTASK[i] = state.tasks[i];
-    }
+   
   }
   filteredTASK = filteredTASK.filter(track => track.task.includes(state.visibilityFilter));
   finalyFiltered = [...storage, ...filteredTASK];
