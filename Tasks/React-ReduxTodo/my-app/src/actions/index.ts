@@ -1,11 +1,11 @@
 let nextTodoId = 0
-export const addTask = (task:string,date:string,subtask:string,maxValue?:number)=> ({
+export const addTask = (task:string,date:string,subtask?:string,maxValue?:number)=> ({
   type: 'ADD_TASK',
   payload: {
     id: maxValue||0,
     task,
     date,
-    subtask,
+    subtask:subtask||null,
     cheked:false
   }
  
@@ -74,6 +74,11 @@ export const DeleteTask = (id:number)=> ({
       type: 'DELETE_TASK',
       id
   })
+  export const deleteCheked = (id:number)=> ({
+    type: 'DELETE_CHEKED',
+    id
+})
+  
   export const deleteSubtask = (subtask:string,id:number,id2:number,cheked:[])=>({
     type:'DELETE_SUBTASK',
     subtask:subtask,

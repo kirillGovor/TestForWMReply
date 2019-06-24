@@ -25,6 +25,9 @@ const cheked = (state: any = [], action) => {
         ...state,
       ]
 
+      case 'DELETE_CHEKED':
+          return    state.filter((item,index) => index == parseInt(action.id));
+      
     default:
       return state
   }

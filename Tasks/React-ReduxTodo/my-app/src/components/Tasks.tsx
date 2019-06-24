@@ -1,15 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { DeleteTask, changeSubtask, deleteSubtask, chektask, checkSubtasks,maxValue, allcheckSubtasksTrue,allcheckSubtasksFalse } from '../actions/index'
+import { DeleteTask, changeSubtask,deleteCheked, deleteSubtask, chektask, checkSubtasks,maxValue, allcheckSubtasksTrue,allcheckSubtasksFalse } from '../actions/index'
 import{renderdate} from './renderDate'
 
-
 let TodoComponent = {
-  textDecoration: "none",//line-through
+  textDecoration: "none",
   cursor: "pointer"
 }
 let SubtaskComponent = {
-  textDecoration: "none",//line-through
+  textDecoration: "none",
   cursor: "pointer"
 }
 let List ={
@@ -18,7 +17,6 @@ let List ={
 }
 let maxNumber = 0
 const Tasks = ({ dispatch, ListTask }) => {
-
   let subtaskInput;
   if (ListTask.tasks.length > 0) {
     return (
@@ -27,21 +25,21 @@ const Tasks = ({ dispatch, ListTask }) => {
           ListTask.tasks.map((item, i) => {
             if (ListTask.cheked[i] == true) {
               TodoComponent = {
-                textDecoration: "line-through",//line-through
+                textDecoration: "line-through",
                 cursor: "pointer"
               }
               SubtaskComponent = {
-                textDecoration: "line-through",//line-through
+                textDecoration: "line-through",
                 cursor: "pointer"
               }
             }
             else {
               TodoComponent = {
-                textDecoration: "none",//line-through
+                textDecoration: "none",
                 cursor: "pointer"
               }
               SubtaskComponent = {
-                textDecoration: "none",//line-through
+                textDecoration: "none",
                 cursor: "pointer"
               }
 
@@ -57,50 +55,47 @@ const Tasks = ({ dispatch, ListTask }) => {
               <ol key={i} style={List}>
 
                 <li >
-                  <span style={TodoComponent} onClick={e => { //line-through
-                    dispatch(chektask(item.id, !ListTask.cheked[i]));
-                    item.subtask.map((item3, i) => {
+                  <span style={TodoComponent} onClick={e => { 
+                    dispatch(chektask(i, !ListTask.cheked[i]));
+                    item.subtask.map((item3, j) => {
                       if(ListTask.cheked[i]===true){
-                      dispatch(allcheckSubtasksTrue(item3, i, item.id))
+                      dispatch(allcheckSubtasksTrue(item3, j, j))
                     }
                     else{
-                      dispatch(allcheckSubtasksFalse(item3, i, item.id))
+                      dispatch(allcheckSubtasksFalse(item3, j, j))
                     }
                     })
                   }} >{item.task} </span>
 
                   <ol>
 
-                    {item.subtask.map((item2, i) => {
+                    {item.subtask.map((item2, k) => {
 
                       if (item.cheked[i] == true) {
                         SubtaskComponent = {
-                          textDecoration: "line-through",//line-through
+                          textDecoration: "line-through",
                           cursor: "pointer"
                         }
                       }
                       else {
                         SubtaskComponent = {
-                          textDecoration: "none",//line-through
+                          textDecoration: "none",
                           cursor: "pointer"
                         }
                       }
-
-
-
 
                       return (
                         <div key={i}>
                           <li style={SubtaskComponent}  key={i}
                             onClick={e => {
                               e.preventDefault();
-                              dispatch(checkSubtasks(item2, i, item.id))
+                              dispatch(checkSubtasks(item2, k, item.id))
                             }}> {item2}</li>
 
 
                           <button className="AddSub" onClick={e => {
                             e.preventDefault();
-                            dispatch(deleteSubtask(item2, i, item.id, item.cheked));
+                            dispatch(deleteSubtask(item2, k, item.id, item.cheked));
                           }} >
                             delete subtask</button>
                         </div>
@@ -115,16 +110,14 @@ const Tasks = ({ dispatch, ListTask }) => {
                 <button className="AddSub" onClick={e => {
                   e.preventDefault()
                   dispatch(DeleteTask(item.id));
+                  dispatch(deleteCheked(i));
                 }} type="button" >delete task</button>
 
                 <button className="AddSub" type="button" onClick={e => {
                   e.preventDefault()
                   dispatch(changeSubtask(subtaskInput.value, i, item.id));
-
                 }} >
                   add subtask</button>
-
-                
               </ol>
             )
           })
@@ -149,12 +142,5 @@ function mapStateToProps(state) {
 }
 
 
-//function mapDispatchToProps(dispatch) {
-//  return {
-//    dispatch,
-//    deleteSubtask({ item,i }, dispatch)
-//  }
-//}
 
-export default connect(mapStateToProps)(Tasks)//,mapDispatchToProps
-// {renderdate(item.date)=="finished"?(<span style={{ cursor: "pointer",textDecoration:"line-through"}} >{item2}</div>):({item2})}
+export default connect(mapStateToProps)(Tasks)
