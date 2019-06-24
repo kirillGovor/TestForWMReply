@@ -23,7 +23,7 @@ const Tasks = ({ dispatch, ListTask }) => {
       <div>
         {
           ListTask.tasks.map((item, i) => {
-            if (ListTask.cheked[i] == true) {
+            if (ListTask.cheked[i] === true) {
               TodoComponent = {
                 textDecoration: "line-through",
                 cursor: "pointer"
@@ -71,7 +71,7 @@ const Tasks = ({ dispatch, ListTask }) => {
 
                     {item.subtask.map((item2, k) => {
 
-                      if (item.cheked[k] == true) {
+                      if (item.cheked[k] === true) {
                         SubtaskComponent = {
                           textDecoration: "line-through",
                           cursor: "pointer"

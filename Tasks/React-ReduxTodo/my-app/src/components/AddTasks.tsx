@@ -46,7 +46,6 @@ const AddTasks = ({ dispatch, ListTask }) => {
         <button className="clearFinishedButton" type="button" onClick={e => {
           e.preventDefault();
           dispatch(deleteFinished(ListTask.cheked));
-
         }}>delete finished</button>
 
 
