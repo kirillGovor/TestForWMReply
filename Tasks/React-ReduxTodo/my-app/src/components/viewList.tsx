@@ -11,7 +11,7 @@ const ViewList: any = (state) => {
 
   if (state.ListTask.visibilityFilter != "SHOW_ALL") {
     return (
-      <FilterTask></FilterTask>
+      <FilterTask/>
     )
   }
   else {
