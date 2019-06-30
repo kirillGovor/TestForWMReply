@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import _ from 'lodash'
+import _ from 'lodash';
+import InfiniteScroll from "react-infinite-scroll-component";
 const API_KEY: string = "HfShRO0x4JtJ5f34VTuoYNn23Qrc9nuH";
 
 interface Images {
-
-  original: Original;
+  fixed_height:Fixed_height
   '480w_still': {
     url: string;
     width: string;
@@ -12,20 +12,19 @@ interface Images {
   };
 }
 
-interface Original {
+interface Fixed_height {
   url: string;
   width: string;
   height: string;
   size: string;
-  frames: string;
   mp4: string;
   mp4_size: string;
   webp: string;
   webp_size: string;
-  hash?: string;
 }
 interface RootObject {
   data: DataItem[];
+  SavedImages: DataItem[]
 }
 interface DataItem {
   type: string;
@@ -41,12 +40,12 @@ interface DataItem {
 
 class Stickers extends Component {
   public state: RootObject = {
-    data: []
-
+    data: [],
+    SavedImages: []
   };
 
   componentDidMount() {
-    return fetch(`http://api.giphy.com/v1/stickers/trending?api_key=${API_KEY}&limit=24`)
+    return fetch(`http://api.giphy.com/v1/stickers/trending?api_key=${API_KEY}&limit=10`)
       .then(res => res.json())
       .then(json => {
         if (json.error) {
@@ -59,19 +58,61 @@ class Stickers extends Component {
       })
   }
 
+  fetchMoreData = () => {
+    setTimeout(() => {
+      return fetch(`http://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=25&offset=${this.state.data.length}`)
+        .then(res => res.json())
+        .then(json => {
+          if (json.error) {
+            alert("Error")
+          } else {
+            json.data = json.data.concat(this.state.data)
+            this.setState({
+              data: json.data
+            })
+            console.log(json.data.length)
+          }
+        })
+
+    }, 1500);
+  };
+
   render() {
 
 
     if (this.state.data.length > 0) {
 
       const list = this.state.data.map((item, k) =>
-        <img key={k} width="200px" src={item.images.original.url} ></img>
+        <img key={k} style={{ border: "solid 1px black",backgroundColor:"white"}} height={item.images.fixed_height.height}
+         width={item.images.fixed_height.width} src={item.images.fixed_height.url}  
+         
+         onClick={e => {
+          let list = [item];
+          console.log(list);
+          var returnvalueJSON1: any = localStorage.getItem("Saved");
+          if (returnvalueJSON1) {
+            returnvalueJSON1 = JSON.parse(returnvalueJSON1);
+            returnvalueJSON1 = returnvalueJSON1.concat(list)
+          }
+          else {
+          }
+          var valueJSON1 = JSON.stringify(returnvalueJSON1);
+          localStorage.setItem("Saved", valueJSON1);
+        }} 
+         ></img>
       );
       return (
         <div>
-          <h1>Stickers</h1>
+        <h1>Trending</h1>
+        <InfiniteScroll
+          dataLength={this.state.data.length}
+          next={this.fetchMoreData}
+          hasMore={true}
+          loader={<h4>Loading...</h4>}
+        >
           {list}
-        </div>
+        </InfiniteScroll>
+      </div>
       )
     }
 

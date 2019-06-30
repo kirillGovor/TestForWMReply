@@ -4,9 +4,6 @@ import Trending from './Trending'
 import Stickers from './Stickers'
 
 
-
-
-
 class List extends Component {
   render() {
       return(
@@ -17,5 +14,4 @@ class List extends Component {
       )
     } 
 }
-
 export default List;
