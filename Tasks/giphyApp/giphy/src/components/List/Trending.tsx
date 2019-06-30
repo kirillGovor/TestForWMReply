@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import _ from 'lodash'
+import _ from 'lodash';
 import InfiniteScroll from "react-infinite-scroll-component";
 const API_KEY: string = "HfShRO0x4JtJ5f34VTuoYNn23Qrc9nuH";
 
@@ -25,8 +25,6 @@ interface Images {
 interface RootObject {
   data: DataItem[],
   SavedImages: DataItem[],
-  scroled: boolean,
-  nextScrolled: number,
 }
 interface DataItem {
   type: string;
@@ -43,22 +41,16 @@ interface DataItem {
 
 
 
-let lastScrollY = 0;
-let ticking = false;
-
-
 class Trending extends Component {
 
   public state: RootObject = {
     data: [],
     SavedImages: [],
-    scroled: false,
-    nextScrolled: 0
   };
 
 
   componentDidMount() {
-  
+
     return fetch(`http://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=25&offset=${this.state.data.length}`)
       .then(res => res.json())
       .then(json => {
@@ -72,41 +64,36 @@ class Trending extends Component {
       })
 
   }
-  componentWillUnmount() {
-  
-  }
 
   fetchMoreData = () => {
     setTimeout(() => {
       return fetch(`http://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=25&offset=${this.state.data.length}`)
-      .then(res => res.json())
-      .then(json => {
-        if (json.error) {
-          alert("Error")
-        } else {
-          json.data = json.data.concat(this.state.data)
-          this.setState({
-            data: json.data
-          })
-          console.log( json.data.length)
-        }
-      })
+        .then(res => res.json())
+        .then(json => {
+          if (json.error) {
+            alert("Error")
+          } else {
+            json.data = json.data.concat(this.state.data)
+            this.setState({
+              data: json.data
+            })
+            console.log(json.data.length)
+          }
+        })
 
     }, 1500);
   };
 
 
-  
-  
 
   render() {
     if (this.state.data.length > 0) {
 
-     
-         
+
+
       const list = this.state.data.map((item, k) =>
 
-     
+
         <img key={k} style={{ border: "solid 1px black", backgroundColor: "yellow" }}
           height={item.images.fixed_height.height} width={item.images.fixed_height.width} src={item.images.fixed_height.url}
 
@@ -124,19 +111,19 @@ class Trending extends Component {
             localStorage.setItem("Saved", valueJSON1);
           }}
         ></img>
-    
+
 
       );
       return (
         <div>
           <h1>Trending</h1>
           <InfiniteScroll
-      dataLength={this.state.data.length}
-      next={this.fetchMoreData}
-      hasMore={true}
-      loader={<h4>Loading...</h4>}
-    >
-          {list}
+            dataLength={this.state.data.length}
+            next={this.fetchMoreData}
+            hasMore={true}
+            loader={<h4>Loading...</h4>}
+          >
+            {list}
           </InfiniteScroll>
         </div>
       )
