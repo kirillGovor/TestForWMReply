@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-
+import './search.css'
 
 
 class Search extends Component {
@@ -15,8 +15,8 @@ class Search extends Component {
     let inputValue: HTMLInputElement | null;
    
     return (
-      <div>
-        <input type="text" placeholder="Search..." ref={node => inputValue = node} onInput={e => {
+      <div className='search'>
+        <input className="InpuSearch" type="text" placeholder="Search..." ref={node => inputValue = node} onInput={e => {
           
           this.setState({ inputvalue: inputValue!.value })
          
@@ -26,7 +26,7 @@ class Search extends Component {
         <Link to={{
           pathname: `/search/${this.state.inputvalue}`
         }}>
-          <button>Find</button>
+          <button className="buttonFind">Find</button>
         </Link>
 
       </div >

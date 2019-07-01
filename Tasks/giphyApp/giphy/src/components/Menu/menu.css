@@ -1,0 +1,17 @@
+.Menu{
+    display: flex;
+    border: solid 2px black;
+}
+h1{
+    color: white;
+    text-shadow: -1px -1px 0px #000000, 0px -1px 0px #000000, 1px -1px 0px #000000, -1px 0px 0px #000000, 1px 0px 0px #000000, -1px 1px 0px #000000, 0px 1px 0px #000000, 1px 1px 0px #000000;
+    text-decoration: none;
+    transition: 0.4s;
+}
+a{
+    text-decoration: none;
+}
+h1:hover{
+    color: black;
+    text-shadow: -1px -1px 0px white, 0px -1px 0px white, 1px -1px 0px white, -1px 0px 0px white, 1px 0px 0px white, -1px 1px 0px white, 0px 1px 0px white 1px 1px 0px white;
+}

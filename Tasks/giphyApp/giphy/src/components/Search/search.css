@@ -1,0 +1,33 @@
+.InpuSearch{
+    color: white;
+    width: 86%;
+    font-size: 20px;
+    height: 40px;
+    border: solid 1px black;
+    text-shadow: -1px -1px 0px #000000, 0px -1px 0px #000000, 1px -1px 0px #000000, -1px 0px 0px #000000, 1px 0px 0px #000000, -1px 1px 0px #000000, 0px 1px 0px #000000, 1px 1px 0px #000000;
+}
+
+.InpuSearch::placeholder {
+    color: white;
+  }
+.buttonFind{
+    height: 45px;
+    margin-left: 20px;
+    background-color: white;
+    cursor: pointer;
+    padding-top: 7px;
+    border: solid 1px;
+    width: 10%;
+}
+.search{ 
+    max-width: 1200px;
+    margin: auto;
+    margin-top:40px;
+    margin-bottom: 40px;
+}
+.backgroundImages{
+    background-image: url(like.jpg);
+    background-size: auto;
+    background-repeat: no-repeat;
+    height: 200px;
+}

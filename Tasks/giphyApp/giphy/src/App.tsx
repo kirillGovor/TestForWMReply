@@ -6,7 +6,7 @@ import Search from './components/Search/Search';
 import Menu from './components/Menu/Menu';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import Stickers from './components/List/Stickers';
-import Trending from './components/List/Trending';
+import Trending from './components/List/Giphs';
 import Searched from './components/Search/Searched';
 import Saved from './components/List/Saved'
 class App extends Component {
@@ -24,7 +24,6 @@ class App extends Component {
      
        
           <Menu/>
-          <h5>Powered by GIPHY</h5>
           <Search />
           <Route exact path ="/" component={List}></Route>
           <Route exact path ="/stickers" component={Stickers}></Route>

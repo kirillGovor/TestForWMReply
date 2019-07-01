@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import _ from 'lodash'
-import Trending from './Trending'
-import Stickers from './Stickers'
-
+import GiphtForMain from './GiphtForMain';
+import StikersForMain from './StickersForMain'
+import './list.css'
 
 class List extends Component {
   render() {
       return(
-        <div>
-          <Trending/>
-          <Stickers/>
+        <div className='list'>
+          <GiphtForMain/>
+          <StikersForMain/>
         </div>
       )
     } 

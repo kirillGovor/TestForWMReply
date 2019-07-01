@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import InfiniteScroll from "react-infinite-scroll-component";
+import './list.css'
+
 const API_KEY: string = "HfShRO0x4JtJ5f34VTuoYNn23Qrc9nuH";
 
 interface Images {
@@ -45,7 +47,8 @@ class Stickers extends Component {
   };
 
   componentDidMount() {
-    return fetch(`http://api.giphy.com/v1/stickers/trending?api_key=${API_KEY}&limit=10`)
+
+    return fetch(`http://api.giphy.com/v1/stickers/trending?api_key=${API_KEY}&limit=25&offset=0`)
       .then(res => res.json())
       .then(json => {
         if (json.error) {
@@ -56,17 +59,18 @@ class Stickers extends Component {
           })
         }
       })
+
   }
 
   fetchMoreData = () => {
     setTimeout(() => {
-      return fetch(`http://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=25&offset=${this.state.data.length}`)
+      return fetch(`http://api.giphy.com/v1/stickers/trending?api_key=${API_KEY}&limit=${this.state.data.length+25}&offset=0`)
         .then(res => res.json())
         .then(json => {
           if (json.error) {
             alert("Error")
           } else {
-            json.data = json.data.concat(this.state.data)
+          
             this.setState({
               data: json.data
             })
@@ -76,14 +80,14 @@ class Stickers extends Component {
 
     }, 1500);
   };
-
   render() {
 
 
     if (this.state.data.length > 0) {
 
       const list = this.state.data.map((item, k) =>
-        <img key={k} style={{ border: "solid 1px black",backgroundColor:"white"}} height={item.images.fixed_height.height}
+      <div key={k} className="backgroundImages">
+        <img key={k} className="images"  style={{ border: "solid 1px black",backgroundColor:"white"}} height={item.images.fixed_height.height}
          width={item.images.fixed_height.width} src={item.images.fixed_height.url}  
          
          onClick={e => {
@@ -100,10 +104,11 @@ class Stickers extends Component {
           localStorage.setItem("Saved", valueJSON1);
         }} 
          ></img>
+         </div>
       );
       return (
-        <div>
-        <h1>Trending</h1>
+        <div className="StyleList">
+        <h1>Stickers</h1>
         <InfiniteScroll
           dataLength={this.state.data.length}
           next={this.fetchMoreData}

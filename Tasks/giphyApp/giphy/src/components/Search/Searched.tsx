@@ -68,7 +68,7 @@ class Searched extends Component<Props & RouteProps>  {
     super(props)
   }
   componentDidMount() {
-    let recievedMessage: string = this.props.location!.pathname.replace('/', ''); //это что за тип будет?)
+    let recievedMessage: string = this.props.location!.pathname.replace('/', '');
     return fetch(`http://api.giphy.com/v1/gifs/search?q=${recievedMessage}&api_key=${API_KEY}&limit=24`)
       .then(res => res.json())
       .then(json => {
@@ -85,8 +85,8 @@ class Searched extends Component<Props & RouteProps>  {
 
 
   componentDidUpdate() {
-    let recivedMessage: string = this.props.location!.pathname.split('/')[1]; // $100
-    recivedMessage = this.props.location!.pathname.replace('/', ''); //это что за тип будет?)
+    let recivedMessage: string = this.props.location!.pathname.split('/')[1];
+    recivedMessage = this.props.location!.pathname.replace('/', '');
     if (this.state.find !== recivedMessage) {
 
 
@@ -109,17 +109,18 @@ class Searched extends Component<Props & RouteProps>  {
 
   fetchMoreData = () => {
     setTimeout(() => {
-      return fetch(`http://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=25&offset=${this.state.data.length}`)
+      let recivedMessage: string = this.props.location!.pathname.split('/')[1];
+      recivedMessage = this.props.location!.pathname.replace('/', '');
+      return fetch(`http://api.giphy.com/v1/gifs/search?q=${recivedMessage}&api_key=${API_KEY}&limit=${this.state.data.length + 25}&offset=0`)
         .then(res => res.json())
         .then(json => {
           if (json.error) {
             alert("Error")
           } else {
-            json.data = json.data.concat(this.state.data)
+
             this.setState({
               data: json.data
             })
-            console.log(json.data.length)
           }
         })
 
@@ -131,7 +132,8 @@ class Searched extends Component<Props & RouteProps>  {
     if (this.state.data.length > 0) {
 
       const list = this.state.data.map((item, k) =>
-        <img key={k} style={{ border: "solid 1px black", backgroundColor: "yellow" }} height={item.images.fixed_height.height}
+      <div key={k}  className="backgroundImages">
+        <img key={k} className="images" style={{ border: "solid 1px black", backgroundColor: "yellow" }} height={item.images.fixed_height.height}
           width={item.images.fixed_height.width} src={item.images.fixed_height.url}
 
           onClick={e => {
@@ -147,8 +149,8 @@ class Searched extends Component<Props & RouteProps>  {
             var valueJSON1 = JSON.stringify(returnvalueJSON1);
             localStorage.setItem("Saved", valueJSON1);
           }}
-
         ></img>
+        </div>
       );
       return (
         <InfiniteScroll

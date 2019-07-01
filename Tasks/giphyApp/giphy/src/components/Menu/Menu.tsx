@@ -13,11 +13,11 @@ class App extends Component {
 
         return (
             <div className="Menu" >
-                <h1>Powered by GIPHY</h1>
-                <Link to={'/'}>Main</Link>
+                <h1>by GIPHY</h1>
+                <Link to={'/'}><h1>Main</h1></Link>
                 <Link to={'/saved'}><h1>Saved</h1></Link> 
-                <Link to={'/stickers'}>Stickers</Link>
-                <Link to={'/trending'}>Trending</Link>
+                <Link to={'/stickers'}><h1>Stickers</h1></Link>
+                <Link to={'/trending'}><h1>Giphs</h1></Link>
             </div>
         );
     }

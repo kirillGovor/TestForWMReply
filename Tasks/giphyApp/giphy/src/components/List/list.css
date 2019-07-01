@@ -1,0 +1,61 @@
+h1{
+    cursor: pointer;
+    margin-left: 20px;
+    color: white;
+    text-shadow: -1px -1px 0px #000000, 0px -1px 0px #000000, 1px -1px 0px #000000, -1px 0px 0px #000000, 1px 0px 0px #000000, -1px 1px 0px #000000, 0px 1px 0px #000000, 1px 1px 0px #000000;
+}
+.list{
+    border: solid 2px;
+    margin-top: 40px;
+    max-width: 1200px;
+    margin: auto;
+}
+.StyleList{
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.infinite-scroll-component {
+    height: auto;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    max-width: 1200px;
+    padding: 10px;
+}
+.LikeThis{
+    height: 202px;
+}
+.images{
+    cursor:pointer;
+    transition:0.3s;
+   
+}
+.images:hover{
+    opacity:0;
+}
+p{
+    font-size: 25px;
+    text-shadow: -1px -1px 0px #000000, 0px -1px 0px #000000, 1px -1px 0px #000000, -1px 0px 0px #000000, 1px 0px 0px #000000, -1px 1px 0px #000000, 0px 1px 0px #000000, 1px 1px 0px #000000;
+    color:white
+}
+p:hover{
+    text-shadow: -1px -1px 0px white, 0px -1px 0px white, 1px -1px 0px white, -1px 0px 0px white, 1px 0px 0px white, -1px 1px 0px white, 0px 1px 0px white, 1px 1px 0px white;
+    color:black
+}
+.backgroundImages{
+    background-image: url(like.jpg);
+    background-size: auto;
+    background-repeat: no-repeat;
+    height: 190px;
+}
+.backgroundDeleteImages{
+    background-image: url(delete.jpg);
+    background-size: auto;
+    background-repeat: no-repeat;
+    height: 190px;
+}

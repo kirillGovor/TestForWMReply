@@ -1,57 +1,67 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import InfiniteScroll from "react-infinite-scroll-component";
+import './list.css';
+import Image from './Images';
 const API_KEY: string = "HfShRO0x4JtJ5f34VTuoYNn23Qrc9nuH";
 
+
 interface Fixed_height {
-  url: string;
-  width: string;
-  height: string;
-  size: string;
-  mp4: string;
-  mp4_size: string;
-  webp: string;
-  webp_size: string;
-}
-interface Images {
-  fixed_height: Fixed_height;
-  '480w_still': {
     url: string;
     width: string;
     height: string;
-  };
+    size: string;
+    mp4: string;
+    mp4_size: string;
+    webp: string;
+    webp_size: string;
+  }
+  interface Images {
+    fixed_height: Fixed_height;
+    '480w_still': {
+      url: string;
+      width: string;
+      height: string;
+    };
+  }
+  
+  interface RootObject2 {
+    data: DataItem2[],
+    SavedImages: DataItem2[],
+  }
+  interface DataItem2 {
+    type: string;
+    id: string;
+    url: string;
+    bitly_gif_url: string;
+    bitly_url: string;
+    username: string;
+    rating: string;
+    title: string;
+    images: Images
+  }
+  
+  
+  
+
+
+class Images extends Component   <RootObject2>{
+
+constructor(props:RootObject2){
+    super(props)
 }
 
-interface RootObject {
-  data: DataItem[],
-  SavedImages: DataItem[],
-}
-interface DataItem {
-  type: string;
-  id: string;
-  url: string;
-  bitly_gif_url: string;
-  bitly_url: string;
-  username: string;
-  rating: string;
-  title: string;
-  images: Images
-}
 
-
-
-
-class Trending extends Component {
-
-  public state: RootObject = {
+  public state: RootObject2 = {
     data: [],
     SavedImages: [],
-  };
 
+  };
+  
 
   componentDidMount() {
-
-    return fetch(`http://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=25&offset=${this.state.data.length}`)
+    console.log(this.props.data);
+    return fetch(`http://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=25&offset=0`)
       .then(res => res.json())
       .then(json => {
         if (json.error) {
@@ -62,18 +72,18 @@ class Trending extends Component {
           })
         }
       })
-
+    
   }
 
   fetchMoreData = () => {
     setTimeout(() => {
-      return fetch(`http://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=25&offset=${this.state.data.length}`)
+      return fetch(`http://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=${this.state.data.length+25}&offset=0`)
         .then(res => res.json())
         .then(json => {
           if (json.error) {
             alert("Error")
           } else {
-            json.data = json.data.concat(this.state.data)
+          
             this.setState({
               data: json.data
             })
@@ -91,10 +101,10 @@ class Trending extends Component {
 
 
 
-      const list = this.state.data.map((item, k) =>
+        const list = this.state.data.map((item, k) =>
 
-
-        <img key={k} style={{ border: "solid 1px black", backgroundColor: "yellow" }}
+        <div key={k}  className="backgroundImages">
+        <img key={k} className="images" style={{ border: "solid 1px black", backgroundColor: "yellow" }}
           height={item.images.fixed_height.height} width={item.images.fixed_height.width} src={item.images.fixed_height.url}
 
           onClick={e => {
@@ -111,20 +121,14 @@ class Trending extends Component {
             localStorage.setItem("Saved", valueJSON1);
           }}
         ></img>
+        </div>
 
 
       );
+
       return (
-        <div>
-          <h1>Trending</h1>
-          <InfiniteScroll
-            dataLength={this.state.data.length}
-            next={this.fetchMoreData}
-            hasMore={true}
-            loader={<h4>Loading...</h4>}
-          >
+        <div className="StyleList">     
             {list}
-          </InfiniteScroll>
         </div>
       )
     }
@@ -142,4 +146,4 @@ class Trending extends Component {
 
 }
 
-export default Trending;
+export default Images;
