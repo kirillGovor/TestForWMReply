@@ -13,7 +13,7 @@ class App extends Component {
 
         return (
             <div className="Menu" >
-                <h1>by GIPHY</h1>
+                <h1><a href="">by GIPHY</a></h1>
                 <Link to={'/'}><h1>Main</h1></Link>
                 <Link to={'/saved'}><h1>Saved</h1></Link> 
                 <Link to={'/stickers'}><h1>Stickers</h1></Link>
