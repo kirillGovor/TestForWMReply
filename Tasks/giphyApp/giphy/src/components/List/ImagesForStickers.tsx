@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
+import InfiniteScroll from "react-infinite-scroll-component";
 import './list.css';
 import { IRootObject, API_KEY } from './interfaces';
-import { Link } from 'react-router-dom';
 
 
+class StickersImages extends Component<IRootObject>{
 
-class Trending extends Component<IRootObject> {
+    constructor(props: IRootObject) {
+        super(props)
+    }
 
     public state: IRootObject = {
         data: [],
         SavedImages: [],
+
     };
 
-
     componentDidMount() {
-
-        return fetch(`http://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=8&offset=${this.state.data.length}`)
+        return fetch(`http://api.giphy.com/v1/stickers/trending?api_key=${API_KEY}&limit=25&offset=0`)
             .then(res => res.json())
             .then(json => {
                 if (json.error) {
@@ -30,15 +32,32 @@ class Trending extends Component<IRootObject> {
 
     }
 
+    fetchMoreData = () => {
+        setTimeout(() => {
+            return fetch(`http://api.giphy.com/v1/stickers/trending?api_key=${API_KEY}&limit=${this.state.data.length + 25}&offset=0`)
+                .then(res => res.json())
+                .then(json => {
+                    if (json.error) {
+                        alert("Error")
+                    } else {
+
+                        this.setState({
+                            data: json.data
+                        })
+                    }
+                })
+
+        }, 1500);
+    };
+
 
 
     render() {
         if (this.state.data.length > 0) {
             const list = this.state.data.map((item, k) =>
-
                 <div key={k} className="backgroundImages">
-                    <img key={k} className="images" style={{ border: "solid 1px black", backgroundColor: "yellow" }}
-                        height={item.images.fixed_height.height} width={item.images.fixed_height.width} src={item.images.fixed_height.url}
+                    <img key={k} className="images" style={{ border: "solid 1px black", backgroundColor: "white" }} height={item.images.fixed_height.height}
+                        width={item.images.fixed_height.width} src={item.images.fixed_height.url}
 
                         onClick={e => {
                             let list = [item];
@@ -54,17 +73,18 @@ class Trending extends Component<IRootObject> {
                         }}
                     ></img>
                 </div>
-
-
             );
+
             return (
                 <div className="StyleList">
-                    <Link to={'/trending'}> <h1>Giphy</h1></Link>
-                    <div className="StyleList">
+                    <InfiniteScroll
+                        dataLength={this.state.data.length}
+                        next={this.fetchMoreData}
+                        hasMore={true}
+                        loader={<h4>Loading...</h4>}
+                    >
                         {list}
-
-                    </div>
-                    <Link to={'/trending'}><p>see more</p></Link>
+                    </InfiniteScroll>
                 </div>
             )
         }
@@ -76,10 +96,6 @@ class Trending extends Component<IRootObject> {
         }
 
     }
-
-
-
-
 }
 
-export default Trending;
+export default StickersImages;
