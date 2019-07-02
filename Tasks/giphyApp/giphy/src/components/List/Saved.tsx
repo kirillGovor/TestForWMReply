@@ -51,7 +51,7 @@ class Stickers extends Component {
         </div>
       );
       return (
-        <div>
+        <div className="StyleList">
           <h1>Saved</h1><br></br>
           <div className="StyleList">
             {list}
