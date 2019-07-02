@@ -48,13 +48,13 @@ p:hover{
     color:black
 }
 .backgroundImages{
-    background-image: url(like.jpg);
+    background-image: url(../images/like.jpg);
     background-size: auto;
     background-repeat: no-repeat;
     height: 190px;
 }
 .backgroundDeleteImages{
-    background-image: url(delete.jpg);
+    background-image: url(../images/delete.jpg);
     background-size: auto;
     background-repeat: no-repeat;
     height: 190px;
