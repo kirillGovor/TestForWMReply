@@ -62,7 +62,7 @@ class Stickers extends Component {
 
     else {
       return (
-        <div>You dont have save images</div>
+        <div className="StyleList">You dont have save images</div>
       )
     }
   }

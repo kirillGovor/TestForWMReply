@@ -59,3 +59,32 @@ p:hover{
     background-repeat: no-repeat;
     height: 190px;
 }
+.footer{
+    border: solid 2px black;
+    margin-top: 40px;
+    text-align: center;
+}
+.footer p {
+    font-size: 25px;
+    text-shadow: -1px -1px 0px #000000, 0px -1px 0px #000000, 1px -1px 0px #000000, -1px 0px 0px #000000, 1px 0px 0px #000000, -1px 1px 0px #000000, 0px 1px 0px #000000, 1px 1px 0px #000000;
+    color: white;
+}
+.footer p:hover{
+    color: white;
+}
+.footer h1 {
+    font-size: 40px;
+    text-shadow: -1px -1px 0px #000000, 0px -1px 0px #000000, 1px -1px 0px #000000, -1px 0px 0px #000000, 1px 0px 0px #000000, -1px 1px 0px #000000, 0px 1px 0px #000000, 1px 1px 0px #000000;
+    color: white;
+    cursor: auto;
+}
+.footer h1:hover{
+    color: white;
+}
+.buttonFind{
+    transition: 0.3s;
+}
+.buttonFind:hover{
+background-color: black;
+color:white;
+}
