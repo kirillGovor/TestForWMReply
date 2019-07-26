@@ -25,15 +25,9 @@ class App extends Component {
         <Route exact path="/trending" component={Trending}></Route>
         <Route exact path="/saved" component={Saved}></Route>
         <Route exact path="/search/:string" component={Searched}></Route>
-
-
       </Router>
     );
   }
 }
 
-
 export default App;
-
-
-

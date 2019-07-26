@@ -45,7 +45,6 @@ export interface IProps {
     props: IPropsDataItem[];
 }
 export interface IPropsDataItem {
-
     location: Ipathname;
 }
 

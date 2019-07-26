@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import InfiniteScroll from "react-infinite-scroll-component";
 import './list.css';
-import { IRootObject, API_KEY } from './interfaces';
+import { IRootObject, API_KEY,IDataItem } from './interfaces';
 
 
 class Imagess extends Component<IRootObject>{
@@ -62,17 +62,17 @@ class Imagess extends Component<IRootObject>{
         <div key={k} className="backgroundImages">
           <img key={k} className="images" style={{ border: "solid 1px black", backgroundColor: "yellow" }}
             height={item.images.fixed_height.height} width={item.images.fixed_height.width} src={item.images.fixed_height.url}
-
+         //   onClick={this.handleClick(item)}
             onClick={e => {
               let list = [item];
-              var returnvalueJSON1: any = localStorage.getItem("Saved");
+              let returnvalueJSON1: any = localStorage.getItem("Saved");
               if (returnvalueJSON1) {
                 returnvalueJSON1 = JSON.parse(returnvalueJSON1);
                 returnvalueJSON1 = returnvalueJSON1.concat(list)
               }
               else {
               }
-              var valueJSON1 = JSON.stringify(returnvalueJSON1);
+              let valueJSON1 = JSON.stringify(returnvalueJSON1);
               localStorage.setItem("Saved", valueJSON1);
             }}
           ></img>
@@ -101,6 +101,21 @@ class Imagess extends Component<IRootObject>{
       )
     }
   }
+  
+
+handleClick = (item:IDataItem) => {
+  let list = [item];
+              let returnvalueJSON1: any = localStorage.getItem("Saved");
+              if (returnvalueJSON1) {
+                returnvalueJSON1 = JSON.parse(returnvalueJSON1);
+                returnvalueJSON1 = returnvalueJSON1.concat(list)
+              }
+              else {
+              }
+              let valueJSON1 = JSON.stringify(returnvalueJSON1);
+              localStorage.setItem("Saved", valueJSON1);
 }
+}
+
 
 export default Imagess;

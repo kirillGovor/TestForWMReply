@@ -15,7 +15,6 @@ class Trending extends Component<IRootObject> {
 
 
     componentDidMount() {
-
         return fetch(`http://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=8&offset=${this.state.data.length}`)
             .then(res => res.json())
             .then(json => {
