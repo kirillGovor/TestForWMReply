@@ -1,0 +1,12 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": false,
+    "environment": "spo",
+    "version": "1.8.2",
+    "libraryName": "calendar",
+    "libraryId": "d2e7c326-87cf-44c4-bb22-2f7fab32f0d5",
+    "packageManager": "npm",
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

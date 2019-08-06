@@ -1,0 +1,27 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "calendar-data-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/calendarData/CalendarDataWebPart.js",
+          "manifest": "./src/webparts/calendarData/CalendarDataWebPart.manifest.json"
+        }
+      ]
+    },
+    "calendar-event-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/calendarEvent/CalendarEventWebPart.js",
+          "manifest": "./src/webparts/calendarEvent/CalendarEventWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "CalendarDataWebPartStrings": "lib/webparts/calendarData/loc/{locale}.js",
+    "CalendarEventWebPartStrings": "lib/webparts/calendarEvent/loc/{locale}.js"
+  }
+}
