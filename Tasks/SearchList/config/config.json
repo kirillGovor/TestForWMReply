@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "search-list-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/searchList/SearchListWebPart.js",
+          "manifest": "./src/webparts/searchList/SearchListWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "SearchListWebPartStrings": "lib/webparts/searchList/loc/{locale}.js"
+  }
+}
