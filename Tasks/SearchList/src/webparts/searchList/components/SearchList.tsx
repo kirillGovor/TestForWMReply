@@ -53,3 +53,16 @@ export default class SearchList extends React.Component<ISearchListProps, {}> {
     );
   }
 }
+//<Fabric>
+//<div className={exampleChildClass}>{}</div>
+// <DetailsList
+//   items={this.state.items}
+ //  columns={this._columsCreate(this.props.fieldsList)}
+ //  setKey="set"
+ //  layoutMode={DetailsListLayoutMode.justified}
+
+ //  selectionPreservedOnEmptyClick={true}
+ //  ariaLabelForSelectionColumn="Toggle selection"
+ //  ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+ ///>
+//</Fabric>
